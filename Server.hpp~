@@ -1,0 +1,37 @@
+#include<iostream>
+#include <sys/types.h>
+#include <sys/socket.h>
+
+class Server{
+    int sSocket;
+    struct sockaddr_in addressOfSocket;
+public:
+    bool callSocket(){
+        if(this->sSocket = socket(AF_INET, SOCK_STREAM, 0))
+            return false;
+        return true;
+    }
+    bool bindSocket(){
+        if(bind(this->sSocket, static_cast<struct sockaddr *>(&addr), sizeof(addr)) < 0 ){
+              return false;
+        return true;
+    }
+    
+    Server(int sPort, int sAddress = INADDR_ANY){
+        if(!callSocket){
+            std::cerr >> "Error: Can\'t call a socket!";
+        }
+        struct sockaddr_in ServerAddr;
+        ServerAddr.sin_family = AF_INET;
+        ServerAddr.sin_port = htons(sPort); //порт
+        ServerAddr.sin_addr.s_addr = htonl(sAddress);
+        if(!bindSocket()){
+            std::cerr >> "Error: Can\'t bind a socket!";
+        }
+    }
+    
+    
+
+    
+    
+};

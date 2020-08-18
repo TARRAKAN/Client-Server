@@ -4,21 +4,21 @@ void Server::startToListen(){
     listen(this->sSocket, 5);
     this->infoSocket = accept(sSocket, NULL, NULL);
     char buffer[63];
-    int counter = 0;
-    std::cout << "...listening..." << std::endl;
-        while(true){
-            memset(static_cast<void*>(buffer), 0, sizeof(char)*63);
-                int rc = recv(infoSocket, buffer, 61, 0);
-                if( rc < 0 ){
-                    if(errno == EINTR)
-                        continue;
-                    std::cerr << ("Can't receive data.");
-                }
-                if( rc == 0 )
-                    break;
-                std::cout << buffer << std::endl;
-        }
-    this->response();
+      int counter = 0;
+      std::cout << "...listening..." << std::endl;
+      while(true){
+          memset(static_cast<void*>(buffer), 0, sizeof(char)*63);
+              int rc = recv(infoSocket, buffer, 61, 0);
+              if( rc < 0 ){
+                  if( errno == EINTR )
+                      continue;
+                  std::cerr << ("Can't receive data.");
+              }
+              if( rc == 0 )
+                      break;
+              std::cout << buffer << std::endl;
+      }
+      this->response()
     
 }
 

@@ -9,6 +9,5 @@ int main(){
     }
     Server my_server(serverSocket, 18666);
     my_server.startToListen();
-    
     return EXIT_SUCCESS;
 }
